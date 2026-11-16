@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio | JavaScript Labs</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --pink: #f5a9cf;
+            --pink-dark: #d77eaf;
+            --pink-light: #fff0f8;
+            --purple: #c9b4f3;
+            --purple-dark: #9e86d5;
+            --blue: #b9d9f8;
+            --blue-light: #e7f3ff;
+            --white: #ffffff;
+            --text: #574968;
+            --muted: #95869e;
+            --border: rgba(255, 255, 255, 0.75);
+            --shadow: 0 12px 35px rgba(143, 112, 174, 0.13);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            color: var(--text);
+            background: #fff8fd;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        button {
+            font-family: 'Nunito', sans-serif;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+        }
+
+        .container {
+            width: min(1120px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 95px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            color: #755c91;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto 45px;
+        }
+
+        .small-tag {
+            display: inline-block;
+            padding: 8px 17px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--pink-dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.9);
+        }
+
+        /* =========================
+           GALAXY BACKGROUND
+        ========================= */
+        .galaxy-bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            overflow: hidden;
+            background: linear-gradient(125deg,
+                    #fff0f8,
+                    #f2eaff,
+                    #e8f3ff,
+                    #fce9f5,
+                    #eee7ff);
+            background-size: 400% 400%;
+            animation: galaxyMove 18s ease infinite;
+        }
+
+        @keyframes galaxyMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .galaxy-bg::before,
+        .galaxy-bg::after {
+            content: "";
+            position: absolute;
+            width: 550px;
+            height: 550px;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.48;
+            animation: floatGlow 14s ease-in-out infinite alternate;
+        }
+
+        .galaxy-bg::before {
+            background: #f7b8dc;
+            top: -180px;
+            left: -150px;
+        }
+
+        .galaxy-bg::after {
+            background: #b9c9f7;
+            bottom: -180px;
+            right: -150px;
+            animation-delay: -5s;
+        }
+
+        @keyframes floatGlow {
+            from {
+                transform: translate(0, 0) scale(1);
+            }
+
+            to {
+                transform: translate(90px, 70px) scale(1.2);
+            }
+        }
+
+        /* Stars */
+        .stars {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white, 0 0 18px #e8b9f5;
+            animation: twinkle 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+        }
+
+        /* =========================
+           3. NAVIGATION
+        ========================= */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .navbar {
+            min-height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 900;
+            color: #c77eae;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #9d8bd0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13px;
+            font-weight: 700;
+            color: #776781;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--pink-dark);
+        }
+
+        .nav-button {
+            padding: 11px 20px;
+            border-radius: 30px;
+            color: white !important;
+            background: linear-gradient(120deg, #eda5cb, #b9a2e7);
+            box-shadow: 0 5px 18px rgba(195, 137, 195, 0.2);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 25px;
+            color: #a47db5;
+            background: transparent;
+        }
+
+        /* =========================
+           4. HERO
+        ========================= */
+        .hero {
+            min-height: 660px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 50px;
+            padding: 75px 0;
+        }
+
+        .hero-label {
+            display: inline-block;
+            color: #b477a6;
+            background: rgba(255, 255, 255, 0.65);
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            border: 1px solid white;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 67px);
+            line-height: 1.2;
+            font-weight: 900;
+            color: #705b86;
+            margin-bottom: 20px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(100deg,
+                    #e58ebd,
+                    #a78cdb,
+                    #83b9e8,
+                    #e58ebd);
+            background-size: 250% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGradient 6s ease infinite;
+        }
+
+        @keyframes textGradient {
+            to {
+                background-position: 250% center;
+            }
+        }
+
+        .hero-description {
+            max-width: 570px;
+            font-size: 15px;
+            line-height: 2;
+            color: #897b93;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 23px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            color: white;
+            background: linear-gradient(120deg, #eea5ca, #ae9cde);
+            box-shadow: 0 8px 22px rgba(191, 137, 191, 0.24);
+        }
+
+        .btn-secondary {
+            color: #9875ac;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 25px rgba(174, 139, 198, 0.22);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .avatar-frame {
+            width: 310px;
+            height: 350px;
+            padding: 8px;
+            border-radius: 48% 48% 45% 45%;
+            background: linear-gradient(135deg,
+                    #f5b5d7,
+                    #cbb5f1,
+                    #a9d5f5,
+                    #eab9e4);
+            box-shadow: 0 15px 40px rgba(174, 137, 196, 0.22);
+            transform: none;
+            animation: none;
+        }
+
+        .avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: inherit;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffe5f2, #e5e4ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a58ab8;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .avatar-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .note-one {
+            top: 45px;
+            right: -5px;
+            transform: rotate(7deg);
+        }
+
+        .note-two {
+            bottom: 40px;
+            left: -20px;
+            transform: rotate(-6deg);
+        }
+
+        /* =========================
+           5. ABOUT
+        ========================= */
+        #about {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .glass-card {
+            padding: 32px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow);
+        }
+
+        .glass-card h3 {
+            color: #9a77b1;
+            font-size: 21px;
+            margin-bottom: 18px;
+        }
+
+        .glass-card p {
+            color: #8d8096;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .info-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #ead8ed;
+            font-size: 13px;
+        }
+
+        .info-row span:first-child {
+            color: #a18fa8;
+        }
+
+        .info-row span:last-child {
+            font-weight: 700;
+            color: #715d83;
+            text-align: right;
+        }
+
+        /* =========================
+           6. LABS
+        ========================= */
+        #labs {
+            background: linear-gradient(130deg,
+                    rgba(255, 231, 245, 0.55),
+                    rgba(235, 229, 255, 0.55),
+                    rgba(225, 242, 255, 0.55));
+            background-size: 300% 300%;
+            animation: galaxyMove 20s ease infinite;
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .lab-card {
+            position: relative;
+            padding: 30px 25px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.78);
+            border: 1px solid white;
+            box-shadow: var(--shadow);
+            transition: 0.35s;
+            overflow: hidden;
+        }
+
+        .lab-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #f3acd0, #bba8eb, #a9d5f1);
+        }
+
+        .lab-card:hover {
+            transform: translateY(-9px);
+            box-shadow: 0 18px 40px rgba(155, 123, 184, 0.2);
+        }
+
+        .lab-number {
+            width: 52px;
+            height: 52px;
+            border-radius: 17px;
+            display: grid;
+            place-items: center;
+            font-family: 'Nunito', sans-serif;
+            font-size: 19px;
+            font-weight: 900;
+            color: #a17db4;
+            background: linear-gradient(135deg, #ffe2f0, #e6e1ff);
+            margin-bottom: 22px;
+        }
+
+        .lab-card h3 {
+            color: #78618c;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        .lab-card p {
+            color: #96879d;
+            font-size: 13px;
+            line-height: 1.9;
+            min-height: 75px;
+            margin-bottom: 20px;
+        }
+
+        .lab-link {
+            color: #c77eae;
+            font-size: 13px;
+            font-weight: 800;
+            transition: 0.3s;
+        }
+
+        .lab-link:hover {
+            color: #9279ca;
+            letter-spacing: 0.4px;
+        }
+
+        /* =========================
+           7. LEARNING OUTCOMES
+        ========================= */
+        #learning {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .learning-card {
+            text-align: center;
+            padding: 28px 18px;
+            border-radius: 23px;
+            background: rgba(255, 255, 255, 0.72);
+            border: 1px solid white;
+            box-shadow: var(--shadow);
+            transition: 0.3s;
+        }
+
+        .learning-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .learning-icon {
+            font-size: 31px;
+            margin-bottom: 14px;
+        }
+
+        .learning-card h3 {
+            color: #8e70a6;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .learning-card p {
+            color: #998ca0;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           8. REFLECTION
+        ========================= */
+        #reflection {
+            padding: 90px 0;
+        }
+
+        .reflection-box {
+            max-width: 850px;
+            margin: auto;
+            padding: 45px;
+            border-radius: 30px;
+            background: linear-gradient(130deg,
+                    rgba(255, 255, 255, 0.88),
+                    rgba(255, 239, 248, 0.8),
+                    rgba(235, 235, 255, 0.85));
+            border: 1px solid white;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .reflection-box h2 {
+            color: #8e70a6;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .reflection-box p {
+            color: #887a91;
+            font-size: 13px;
+            line-height: 2.1;
+            text-align: justify;
+        }
+
+        /* =========================
+           9. FOOTER
+        ========================= */
+        footer {
+            padding: 35px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.55);
+            border-top: 1px solid white;
+        }
+
+        footer p {
+            color: #998ba1;
+            font-size: 12px;
+            line-height: 2;
+        }
+
+        footer a {
+            color: #c77eae;
+            font-weight: 800;
+        }
+
+        .back-top {
+            position: fixed;
+            right: 25px;
+            bottom: 25px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            background: linear-gradient(135deg, #eea5ca, #a99ae2);
+            box-shadow: 0 8px 20px rgba(170, 133, 194, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 90;
+        }
+
+        .back-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================
+           10. RESPONSIVE
+        ========================= */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr 0.8fr;
+                gap: 20px;
+            }
+
+            .avatar-frame {
+                width: 250px;
+                height: 290px;
+            }
+
+            .learning-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 76px;
+                left: 0;
+                width: 100%;
+                padding: 25px;
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(15px);
+                display: none;
+                flex-direction: column;
+                gap: 22px;
+                border-bottom: 1px solid white;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 65px 0;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                margin-top: 30px;
+            }
+
+            .avatar-frame {
+                width: 240px;
+                height: 280px;
+            }
+
+            .note-one {
+                right: 0;
+            }
+
+            .note-two {
+                left: 0;
+            }
+
+            .about-grid,
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .lab-card p {
+                min-height: auto;
+            }
+
+            .reflection-box {
+                padding: 30px 22px;
+            }
+
+            .section {
+                padding: 70px 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .learning-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .info-row span:last-child {
+                text-align: left;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background galaxy -->
+    <div class="galaxy-bg"></div>
+    <div class="stars" id="stars"></div>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo">My<span>Portfolio.</span> ✦</a>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Mở menu">☰</button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#labs">Bài thực hành</a></li>
+                <li><a href="#learning">Kiến thức</a></li>
+                <li><a href="#reflection">Tự đánh giá</a></li>
+                <li><a href="https://github.com/nminh149/Tuan3" target="_blank" class="nav-button">GitHub ↗</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home">
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+                    <span class="hero-label">✦ WELCOME TO MY DIGITAL SPACE ✦</span>
+
+                    <h1>
+                        Xin chào,<br>
+                        mình là <span class="gradient-text">Nguyễn Đặng Ngọc Minh</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Chào mừng bạn đến với không gian học tập của mình!
+                        Đây là nơi mình lưu lại hành trình khám phá JavaScript,
+                        thực hành lập trình và phát triển các kỹ năng xây dựng
+                        website trong học phần Phát triển ứng dụng Thương mại điện tử.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#labs" class="btn btn-primary">Khám phá bài Lab ✨</a>
+                        <a href="#about" class="btn btn-secondary">Tìm hiểu về mình</a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="avatar-frame">
+                        <div class="avatar-inner">
+                            <img src="./image/nminh.jpg" alt="Ảnh đại diện của tôi"
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="section" id="about">
+            <div class="container">
+                <h2 class="section-title">About Me ♡</h2>
+                <p class="section-subtitle">
+                    Một chút thông tin về mình và hành trình học tập tại UEH.
+                </p>
+
+                <div class="about-grid">
+                    <div class="glass-card">
+                        <h3>✧ Giới thiệu bản thân</h3>
+                        <p>
+                            Xin chào! Mình là một sinh viên ngành Thương mại điện tử.
+                            Mình yêu thích việc khám phá công nghệ, sáng tạo nội dung
+                            và tìm hiểu cách các nền tảng kỹ thuật số vận hành.
+                            Thông qua học phần này, mình mong muốn xây dựng nền tảng
+                            lập trình vững chắc hơn và có thể tự tay tạo ra những
+                            giao diện website thú vị.
+                        </p>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>✧ Thông tin sinh viên</h3>
+
+                        <div class="info-list">
+                            <div class="info-row">
+                                <span>Họ và tên</span>
+                                <span>Nguyễn Đặng Ngọc Minh</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span>MSSV</span>
+                                <span>31241020263</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Mã lớp học phần</span>
+                                <span>26C1INF50902701</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Trường</span>
+                                <span>Đại học Kinh tế TP.HCM (UEH)</span>
+                            </div>
+
+                            <div class="info-row">
+                                <span>Học phần</span>
+                                <span>Phát triển ứng dụng TMĐT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LABS -->
+        <section class="section" id="labs">
+            <div class="container">
+                <h2 class="section-title">My JavaScript Labs ✨</h2>
+                <p class="section-subtitle">
+                    Ba chặng thực hành giúp mình từng bước làm quen với JavaScript,
+                    thao tác với giao diện và xây dựng tương tác cho website.
+                </p>
+
+                <div class="lab-grid">
+
+                    <div class="lab-card">
+                        <div class="lab-number">08</div>
+                        <h3>JavaScript 1</h3>
+                        <p>
+                            Language Foundations - Làm quen với những kiến thức
+                            nền tảng của JavaScript như biến, kiểu dữ liệu,
+                            toán tử, câu lệnh điều kiện và vòng lặp.
+                        </p>
+                        <a href="./Lab08/index.html" class="lab-link">
+                            Xem bài thực hành →
+                        </a>
+                    </div>
+
+                    <div class="lab-card">
+                        <div class="lab-number">09</div>
+                        <h3>JavaScript 2</h3>
+                        <p>
+                            DOM and Events - Tìm hiểu cách truy cập, thay đổi
+                            các thành phần HTML và xử lý sự kiện để tạo ra
+                            những tương tác trên website.
+                        </p>
+                        <a href="./Lab09/index.html" class="lab-link">
+                            Xem bài thực hành →
+                        </a>
+                    </div>
+
+                    <div class="lab-card">
+                        <div class="lab-number">10</div>
+                        <h3>JavaScript 3</h3>
+                        <p>
+                            jQuery - Làm quen với thư viện jQuery, hỗ trợ
+                            thao tác DOM, xử lý sự kiện và xây dựng hiệu ứng
+                            giao diện một cách thuận tiện hơn.
+                        </p>
+                        <a href="./Lab10/index.html" class="lab-link">
+                            Xem bài thực hành →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- LEARNING OUTCOMES -->
+        <section class="section" id="learning">
+            <div class="container">
+                <h2 class="section-title">What I've Learned 🌷</h2>
+                <p class="section-subtitle">
+                    Những kiến thức và kỹ năng mình hướng đến sau quá trình thực hành.
+                </p>
+
+                <div class="learning-grid">
+
+                    <div class="learning-card">
+                        <div class="learning-icon">💻</div>
+                        <h3>JavaScript Basics</h3>
+                        <p>Nắm được cú pháp, biến, kiểu dữ liệu, toán tử và cấu trúc điều khiển.</p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="learning-icon">🧩</div>
+                        <h3>DOM Manipulation</h3>
+                        <p>Biết cách truy cập và thay đổi nội dung, cấu trúc của trang HTML.</p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="learning-icon">✨</div>
+                        <h3>Event Handling</h3>
+                        <p>Hiểu cách xử lý sự kiện để tăng tính tương tác cho website.</p>
+                    </div>
+
+                    <div class="learning-card">
+                        <div class="learning-icon">🌸</div>
+                        <h3>jQuery</h3>
+                        <p>Làm quen với cách sử dụng jQuery để thao tác và tạo hiệu ứng giao diện.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- REFLECTION -->
+        <section class="section" id="reflection">
+            <div class="container">
+                <div class="reflection-box">
+                    <span class="small-tag">MY LEARNING JOURNEY</span>
+                    <h2>My Reflection ♡</h2>
+
+                    <p>
+                        Trong quá trình thực hiện các bài thực hành JavaScript,
+                        mình đã có cơ hội tiếp cận và hiểu rõ hơn về cách xây dựng
+                        tính tương tác cho website. Ban đầu, mình gặp một số khó khăn
+                        khi ghi nhớ cú pháp, sử dụng DOM và xử lý sự kiện. Tuy nhiên,
+                        thông qua việc thực hành từng bài Lab, mình dần hiểu được
+                        cách JavaScript kết nối với HTML và CSS để tạo nên một trang
+                        web hoàn chỉnh hơn. Đặc biệt, việc làm quen với jQuery giúp
+                        mình biết thêm một cách tiếp cận trong thao tác và xử lý
+                        giao diện. Mình nhận thấy bản thân đã cải thiện khả năng
+                        đọc hiểu mã nguồn, tìm lỗi và vận dụng kiến thức vào bài tập.
+                        Đây là nền tảng hữu ích để mình tiếp tục phát triển kỹ năng
+                        lập trình web trong thời gian tới.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Made with ♡ by Ngọc Minh</p>
+            <p>JavaScript Labs | Phát triển ứng dụng Thương mại điện tử</p>
+            <p>
+                <a href="https://github.com/nminh149/Tuan3" target="_blank">
+                    Visit my GitHub profile ↗
+                </a>
+            </p>
+            <p>© <span id="year"></span> My Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <button class="back-top" id="backTop" aria-label="Lên đầu trang">↑</button>
+
+    <script>
+        // Tạo các ngôi sao trang trí
+        const starsContainer = document.getElementById("stars");
+
+        for (let i = 0; i < 45; i++) {
+            const star = document.createElement("span");
+            star.className = "star";
+
+            star.style.left = Math.random() * 100 + "%";
+            star.style.top = Math.random() * 100 + "%";
+            star.style.animationDelay = Math.random() * 4 + "s";
+            star.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+            const size = 2 + Math.random() * 3;
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+
+            starsContainer.appendChild(star);
+        }
+
+        // Menu trên thiết bị di động
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", function () {
+            navLinks.classList.toggle("active");
+            menuToggle.textContent = navLinks.classList.contains("active") ? "✕" : "☰";
+        });
+
+        // Đóng menu sau khi chọn mục
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("active");
+                menuToggle.textContent = "☰";
+            });
+        });
+
+        // Nút quay lại đầu trang
+        const backTop = document.getElementById("backTop");
+
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 400) {
+                backTop.classList.add("show");
+            } else {
+                backTop.classList.remove("show");
+            }
+        });
+
+        backTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Tự động cập nhật năm
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>
