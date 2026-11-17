@@ -558,10 +558,62 @@
         }
 
         .lab-link {
+            display: block;
             color: #c77eae;
             font-size: 13px;
             font-weight: 800;
             transition: 0.3s;
+        }
+
+        .lab-explore {
+            display: inline-flex;
+            align-items: center;
+            margin: 0 0 18px;
+            padding: 10px 16px;
+            border-radius: 22px;
+            color: white;
+            font-size: 13px;
+            font-weight: 800;
+            background: linear-gradient(120deg, #eda5cb, #b9a2e7);
+            box-shadow: 0 5px 16px rgba(195, 137, 195, 0.2);
+            transition: 0.3s;
+        }
+
+        .lab-explore:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(174, 139, 198, 0.25);
+        }
+
+        .lab-exercises {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+            margin-top: 2px;
+        }
+
+        .lab-exercises[hidden] {
+            display: none;
+        }
+
+        .exercise-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 12px 14px;
+            border: 1px solid rgba(201, 180, 243, 0.45);
+            border-radius: 14px;
+            color: #866a9e;
+            background: linear-gradient(135deg, rgba(255, 240, 248, 0.9), rgba(231, 243, 255, 0.9));
+            font-size: 12px;
+            font-weight: 800;
+            transition: 0.25s;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-2px);
+            border-color: #d77eaf;
+            box-shadow: 0 7px 16px rgba(143, 112, 174, 0.12);
         }
 
         .lab-link:hover {
@@ -872,12 +924,11 @@
                 <div class="hero-visual">
                     <div class="avatar-frame">
                         <div class="avatar-inner">
-                            <img src="./image/nminh.jpg" alt="Ảnh đại diện của tôi"
+                            <img src="./image/nminh.jpg" alt="Ảnh đại diện của tôi" </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </section>
 
         <!-- ABOUT -->
@@ -954,9 +1005,16 @@
                             nền tảng của JavaScript như biến, kiểu dữ liệu,
                             toán tử, câu lệnh điều kiện và vòng lặp.
                         </p>
-                        <a href="./Lab08/index.html" class="lab-link">
-                            Xem bài thực hành →
-                        </a>
+                        <button type="button" class="lab-explore" aria-expanded="false" aria-controls="lab08-exercises">Explore Lab &rarr;</button>
+                        <div class="lab-exercises" id="lab08-exercises" hidden>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough02.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 02</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough06.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 06</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough07.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 07</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough08.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 08</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough09.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 09</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough10.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 10</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab08/ch08-lab-start-master/lab08-walkthrough11.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 11</span><span aria-hidden="true">&rarr;</span></a>
+                        </div>
                     </div>
 
                     <div class="lab-card">
@@ -967,9 +1025,16 @@
                             các thành phần HTML và xử lý sự kiện để tạo ra
                             những tương tác trên website.
                         </p>
-                        <a href="./Lab09/index.html" class="lab-link">
-                            Xem bài thực hành →
-                        </a>
+                        <button type="button" class="lab-explore" aria-expanded="false" aria-controls="lab09-exercises">Explore Lab &rarr;</button>
+                        <div class="lab-exercises" id="lab09-exercises" hidden>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough01.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 01</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough02.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 02</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough03.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 03</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough04.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 04</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough05.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 05</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough07.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 07</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab09/ch09-lab-start-master/lab09-walkthrough08.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 08</span><span aria-hidden="true">&rarr;</span></a>
+                        </div>
                     </div>
 
                     <div class="lab-card">
@@ -980,9 +1045,18 @@
                             thao tác DOM, xử lý sự kiện và xây dựng hiệu ứng
                             giao diện một cách thuận tiện hơn.
                         </p>
-                        <a href="./Lab10/index.html" class="lab-link">
-                            Xem bài thực hành →
-                        </a>
+                        <button type="button" class="lab-explore" aria-expanded="false" aria-controls="lab10-exercises">Explore Lab &rarr;</button>
+                        <div class="lab-exercises" id="lab10-exercises" hidden>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough01.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 01</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough03.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 03</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough04.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 04</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough05.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 05</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough06.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 06</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough07.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 07</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough08.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 08</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough09.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 09</span><span aria-hidden="true">&rarr;</span></a>
+                            <a href="./Lab10/ch10-lab-start-master/lab10-walkthrough10.html" class="exercise-card" target="_blank" rel="noopener"><span>Exercise 10</span><span aria-hidden="true">&rarr;</span></a>
+                        </div>
                     </div>
 
                 </div>
@@ -1124,6 +1198,14 @@
             });
         });
 
+        document.querySelectorAll(".lab-explore").forEach(button => {
+            button.addEventListener("click", function () {
+                const exercises = document.getElementById(button.getAttribute("aria-controls"));
+                const isExpanded = button.getAttribute("aria-expanded") === "true";
+                button.setAttribute("aria-expanded", String(!isExpanded));
+                exercises.hidden = isExpanded;
+            });
+        });
         // Tự động cập nhật năm
         document.getElementById("year").textContent = new Date().getFullYear();
     </script>
