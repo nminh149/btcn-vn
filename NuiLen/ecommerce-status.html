@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Đơn hàng | Núi Len</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body id="top">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-logo" href="ecommerce.html" aria-label="Núi Len - Trang chủ">
+                <img src="images/Nuilenlogo.png" alt="Núi Len">
+            </a>
+            <form class="search-form" aria-label="Tìm sản phẩm">
+                <input type="search" placeholder="Tìm món đồ len bạn yêu thích..." aria-label="Tìm sản phẩm">
+                <button type="submit" aria-label="Tìm kiếm">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+                </button>
+            </form>
+            <div class="header-actions">
+                <a href="ecommerce-status.html" class="header-icon" aria-label="Đơn hàng" title="Đơn hàng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7"/></svg>
+                </a>
+                <a href="ecommerce-cart.html" class="header-icon" aria-label="Giỏ hàng" title="Giỏ hàng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2 11h12l2-8H6"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+                    <span class="cart-count" hidden>0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-navigation" aria-label="Điều hướng chính">
+        <div class="container">
+            <button class="nav-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="site-navigation-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-list" id="site-navigation-links">
+                <li><a class="nav-link" href="ecommerce.html">Trang chủ</a></li>
+                <li class="nav-dropdown">
+                    <a class="nav-link" href="ecommerce.html#products">
+                        Danh mục sản phẩm
+                        <span class="caret"><svg class="chevron-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ecommerce.html#products">Tất cả sản phẩm</a></li>
+                        <li><a href="ecommerce.html?category=yarn#products">Len sợi</a></li>
+                        <li><a href="ecommerce.html?category=amigurumi#products">Gấu bông và Hoa</a></li>
+                        <li><a href="ecommerce.html?category=keychain#products">Móc khóa len</a></li>
+                        <li><a href="ecommerce.html?category=bag#products">Túi &amp; phụ kiện</a></li>
+                        <li><a href="ecommerce.html?category=materials#products">Kim móc &amp; phụ liệu</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link active" href="ecommerce-status.html" aria-current="page">Đơn hàng</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="orders-page">
+        <div class="container">
+            <section class="orders-intro">
+                <div>
+                    <h1>Đơn hàng của tôi</h1>
+                </div>
+                <a class="btn-green orders-shop-link" href="ecommerce.html#products">Tiếp tục mua sắm</a>
+            </section>
+
+            <section class="orders-panel" aria-label="Danh sách đơn hàng">
+                <div class="orders-toolbar">
+                    <div>
+                        <h2>Lịch sử mua hàng</h2>
+                        <p id="orders-count">Đang tải đơn hàng...</p>
+                    </div>
+                    <div class="orders-controls">
+                        <label class="orders-search-wrap">
+                            <span class="sr-only">Tìm đơn hàng</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+                            <input id="orders-search" type="search" placeholder="Tìm mã đơn hoặc sản phẩm">
+                        </label>
+                        <label class="sr-only" for="orders-filter">Lọc trạng thái</label>
+                        <select id="orders-filter">
+                            <option value="all">Tất cả trạng thái</option>
+                            <option value="pending">Chờ xác nhận</option>
+                            <option value="preparing">Đang chuẩn bị</option>
+                            <option value="shipping">Đang giao</option>
+                            <option value="complete">Đã giao</option>
+                            <option value="cancelled">Đã hủy</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="orders-list" class="orders-list" aria-live="polite"></div>
+                <div id="orders-empty" class="orders-empty" hidden>
+                    <span class="orders-empty-icon" aria-hidden="true">▤</span>
+                    <h3 id="orders-empty-title">Chưa có đơn hàng</h3>
+                    <p id="orders-empty-message">Các đơn bạn đặt sẽ xuất hiện tại đây để tiện theo dõi.</p>
+                    <a class="btn-green" href="ecommerce.html#products">Khám phá sản phẩm</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="ecommerce.html">Núi Len<span>.</span></a>
+                    <p>Len sợi và sản phẩm handmade được chọn lựa dành cho những người yêu sáng tạo.</p>
+                    <div class="footer-contact">
+                        <a href="tel:0868844261">0868 844 261</a>
+                        <a href="mailto:hello@nuilen.vn">hello@nuilen.vn</a>
+                        <span>TP. Hồ Chí Minh, Việt Nam</span>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Danh mục</h3>
+                    <a href="ecommerce.html#products">Tất cả sản phẩm</a>
+                    <a href="ecommerce.html?category=yarn#products">Len sợi</a>
+                    <a href="ecommerce.html?category=amigurumi#products">Gấu bông và Hoa</a>
+                    <a href="ecommerce.html?category=materials#products">Kim móc &amp; phụ liệu</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="ecommerce.html">Trang chủ</a>
+                    <a href="ecommerce-status.html">Đơn hàng</a>
+                    <a href="ecommerce-cart.html">Giỏ hàng</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <p>Thứ 2 – Thứ 7</p>
+                    <p>Liên hệ để được tư vấn sản phẩm.</p>
+                    <a href="mailto:hello@nuilen.vn">Gửi yêu cầu hỗ trợ →</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Núi Len. All rights reserved.</span>
+                <a href="#top">Về đầu trang ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        "use strict";
+
+        const ORDERS_KEY = "nuilen-orders";
+        const searchInput = document.getElementById("orders-search");
+        const filterSelect = document.getElementById("orders-filter");
+        const ordersList = document.getElementById("orders-list");
+        const ordersEmpty = document.getElementById("orders-empty");
+        const ordersCount = document.getElementById("orders-count");
+        const selectedOrderId = new URLSearchParams(location.search).get("id");
+
+        function makeDemoOrders() {
+            const samples = [
+                { id: "NL-DEMO-1005", status: "Chờ xác nhận", age: 2, name: "Nguyễn Minh Anh", phone: "0901234567", product: "mochi", quantity: 1 },
+                { id: "NL-DEMO-1004", status: "Đang chuẩn bị", age: 27, name: "Trần Gia Hân", phone: "0912345678", product: "flower", quantity: 2 },
+                { id: "NL-DEMO-1003", status: "Đang giao", age: 52, name: "Lê Hoàng Nam", phone: "0987654321", product: "milk-cotton", quantity: 4 },
+                { id: "NL-DEMO-1002", status: "Đã giao", age: 96, name: "Phạm Ngọc Mai", phone: "0934567890", product: "sun-earth-keychain", quantity: 2 },
+                { id: "NL-DEMO-1001", status: "Đã hủy", age: 168, name: "Võ Thanh Trúc", phone: "0976543210", product: "bottle-bag", quantity: 1 }
+            ];
+
+            return samples.map(sample => {
+                const product = window.NuiLen.getProduct(sample.product);
+                if (!product) return null;
+                const item = {
+                    id: product.id,
+                    price: product.price,
+                    quantity: sample.quantity,
+                    image: product.image
+                };
+                return {
+                    id: sample.id,
+                    status: sample.status,
+                    createdAt: new Date(Date.now() - sample.age * 60 * 60 * 1000).toISOString(),
+                    customer: {
+                        name: sample.name,
+                        phone: sample.phone,
+                        address: "12 Nguyễn Trãi, Quận 5, TP. Hồ Chí Minh"
+                    },
+                    items: [[product.name, item]],
+                    total: product.price * sample.quantity,
+                    isDemo: true
+                };
+            }).filter(Boolean);
+        }
+
+        function getOrders() {
+            let orders;
+            try {
+                const value = JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+                orders = Array.isArray(value) ? value : [];
+            } catch {
+                orders = [];
+            }
+
+            const existingDemoIds = new Set(orders.filter(order => order.isDemo).map(order => order.id));
+            const missingDemos = makeDemoOrders().filter(order => !existingDemoIds.has(order.id));
+            if (missingDemos.length) {
+                const combined = [...orders, ...missingDemos];
+                try {
+                    localStorage.setItem(ORDERS_KEY, JSON.stringify(combined));
+                } catch {
+                    // Keep the demo visible if browser storage is unavailable.
+                }
+                return combined;
+            }
+            return orders;
+        }
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, char => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            })[char]);
+        }
+
+        function normalize(value) {
+            return String(value ?? "").normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        function getStatus(value) {
+            const raw = String(value || "Chờ xác nhận");
+            const status = normalize(raw);
+            if (status.includes("huy")) return { key: "cancelled", label: raw };
+            if (status.includes("hoan thanh") || status.includes("hoan tat") ||
+                (status.includes("giao") && status.includes("da"))) {
+                return { key: "complete", label: raw };
+            }
+            if (status.includes("giao") || status.includes("van chuyen")) {
+                return { key: "shipping", label: raw };
+            }
+            if (status.includes("chuan bi") || status.includes("xu ly")) {
+                return { key: "preparing", label: raw };
+            }
+            return { key: "pending", label: raw };
+        }
+
+        function formatDate(value) {
+            const date = new Date(value);
+            if (Number.isNaN(date.getTime())) return "Chưa có ngày đặt";
+            return new Intl.DateTimeFormat("vi-VN", {
+                day: "2-digit", month: "2-digit", year: "numeric",
+                hour: "2-digit", minute: "2-digit"
+            }).format(date);
+        }
+
+        function orderItems(order) {
+            const entries = Array.isArray(order.items) ? order.items : [];
+            return entries.map(entry => {
+                const item = Array.isArray(entry) ? (entry[1] || {}) : (entry || {});
+                const itemName = Array.isArray(entry) ? entry[0] : (item.name || "Sản phẩm");
+                const product = window.NuiLen.getProduct(item.id || itemName);
+                const name = (product?.name || itemName) + (item.variant ? " — " + item.variant : "");
+                const quantity = Number(item.quantity) || 0;
+                const price = Number(item.price ?? product?.price) || 0;
+                const image = product?.image || item.image || "images/banner1.webp";
+                return { id: product?.id || item.id || "", name, quantity, price, image };
+            });
+        }
+
+        function renderOrder(order) {
+            const status = getStatus(order.status);
+            const items = orderItems(order);
+            const quantity = items.reduce((sum, item) => sum + item.quantity, 0);
+            const total = Number(order.total) || items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            const orderId = String(order.id || "");
+            const products = items.map(item => `
+                <div class="order-product-line">
+                    <a class="order-product-image-link" href="${item.id ? `ecommerce-detail.html?id=${encodeURIComponent(item.id)}` : "ecommerce.html#products"}" aria-label="Xem ${escapeHTML(item.name)}">
+                        <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy">
+                    </a>
+                    <div class="order-product-name">
+                        <strong>${escapeHTML(item.name)}</strong>
+                        <span>Số lượng: ${item.quantity}</span>
+                    </div>
+                    <strong class="order-product-total">${window.NuiLen.formatPrice(item.price * item.quantity)}</strong>
+                </div>
+            `).join("");
+
+            return `
+                <article class="order-card order-card-${status.key}" id="order-${escapeHTML(orderId)}">
+                    <header class="order-card-header">
+                        <div>
+                            <p class="order-code">Mã đơn <strong>#${escapeHTML(orderId)}</strong>${order.isDemo ? '<span class="order-demo-label">Dữ liệu minh họa</span>' : ""}</p>
+                            <time datetime="${escapeHTML(order.createdAt || "")}">${formatDate(order.createdAt)}</time>
+                        </div>
+                        <span class="order-status-badge status-${status.key}">${escapeHTML(status.label)}</span>
+                    </header>
+                    <div class="order-card-products">${products || '<p class="order-no-products">Không có thông tin sản phẩm.</p>'}</div>
+                    <footer class="order-card-footer">
+                        <span>${quantity} sản phẩm</span>
+                        <span class="order-total-label">Tổng thanh toán <strong>${window.NuiLen.formatPrice(total)}</strong></span>
+                    </footer>
+                </article>
+            `;
+        }
+
+        function renderOrders() {
+            const orders = getOrders().sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+            const selectedStatus = filterSelect.value;
+            const query = normalize(searchInput.value.trim());
+            const filtered = orders.filter(order => {
+                const productNames = orderItems(order).map(item => item.name).join(" ");
+                const matchesSearch = !query || normalize([order.id, productNames].join(" ")).includes(query);
+                const matchesStatus = selectedStatus === "all" || getStatus(order.status).key === selectedStatus;
+                return matchesSearch && matchesStatus;
+            });
+
+            ordersCount.textContent = `${filtered.length} đơn hàng`;
+            ordersList.innerHTML = filtered.map(renderOrder).join("");
+            ordersEmpty.hidden = filtered.length > 0;
+            if (!orders.length) {
+                document.getElementById("orders-empty-title").textContent = "Chưa có đơn hàng";
+                document.getElementById("orders-empty-message").textContent = "Các đơn bạn đặt sẽ xuất hiện tại đây để tiện theo dõi.";
+            } else if (!filtered.length) {
+                document.getElementById("orders-empty-title").textContent = "Không tìm thấy đơn hàng";
+                document.getElementById("orders-empty-message").textContent = "Thử đổi từ khóa hoặc trạng thái lọc.";
+            }
+
+            if (selectedOrderId) {
+                const card = document.getElementById("order-" + selectedOrderId);
+                if (card) {
+                    card.classList.add("order-card-highlight");
+                    setTimeout(() => card.scrollIntoView({ behavior: "smooth", block: "center" }), 100);
+                }
+            }
+        }
+
+        searchInput.addEventListener("input", renderOrders);
+        filterSelect.addEventListener("change", renderOrders);
+        window.addEventListener("storage", event => {
+            if (event.key === ORDERS_KEY) renderOrders();
+        });
+
+        if (selectedOrderId) searchInput.value = selectedOrderId;
+        renderOrders();
+    </script>
+</body>
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giỏ hàng | Núi Len</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body id="top">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-logo" href="ecommerce.html">
+                <img src="images/Nuilenlogo.png" alt="Núi Len">
+            </a>
+
+            <form class="search-form" id="cart-search">
+                <input id="cart-search-input" type="search" placeholder="Tìm món đồ len bạn yêu thích...">
+                <button type="submit" aria-label="Tìm kiếm">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="10.5" cy="10.5" r="6.5" />
+                        <path d="m16 16 5 5" />
+                    </svg>
+                </button>
+            </form>
+
+            <div class="header-actions">
+                <a href="ecommerce-status.html" class="header-icon" aria-label="Đơn hàng" title="Đơn hàng">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7" />
+                    </svg>
+                </a>
+                <a href="ecommerce-cart.html" class="header-icon" aria-label="Giỏ hàng">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 4h2l2 11h12l2-8H6" />
+                        <circle cx="9" cy="20" r="1" />
+                        <circle cx="18" cy="20" r="1" />
+                    </svg>
+                    <span id="cart-count" class="cart-count" hidden>0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-navigation" aria-label="Điều hướng chính">
+        <div class="container">
+            <button class="nav-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="site-navigation-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-list" id="site-navigation-links">
+                <li><a class="nav-link" href="ecommerce.html">Trang ch&#7911;</a></li>
+                <li class="nav-dropdown">
+                    <a class="nav-link" href="ecommerce.html#products">Danh m&#7909;c s&#7843;n ph&#7849;m <span class="caret"><svg class="chevron-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m3 6 5 5 5-5" /></svg></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ecommerce.html#products">T&#7845;t c&#7843; s&#7843;n ph&#7849;m</a></li>
+                        <li><a href="ecommerce.html?category=yarn#products">Len s&#7907;i</a></li>
+                        <li><a href="ecommerce.html?category=amigurumi#products">G&#7845;u b&#244;ng v&#224; Hoa</a></li>
+                        <li><a href="ecommerce.html?category=keychain#products">M&#243;c kh&#243;a len</a></li>
+                        <li><a href="ecommerce.html?category=bag#products">T&#250;i &amp; ph&#7909; ki&#7879;n</a></li>
+                        <li><a href="ecommerce.html?category=materials#products">Kim m&#243;c &amp; ph&#7909; li&#7879;u</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link" href="ecommerce-status.html">&#272;&#417;n h&#224;ng</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="cart-page">
+        <div class="container">
+
+            <div class="breadcrumb-custom">
+                <a href="ecommerce.html">Trang chủ</a>
+                <span>›</span>
+                <span>Giỏ hàng</span>
+            </div>
+
+            <div class="cart-page-heading">
+                <h1>Giỏ hàng của bạn</h1>
+            </div>
+
+            <div id="cart-empty" class="cart-empty-state" hidden>
+                <div class="empty-icon">🧶</div>
+                <h2>Giỏ hàng của bạn đang trống</h2>
+                <p>Hãy khám phá những món đồ handmade tại Núi Len nhé!</p>
+                <a href="ecommerce.html#products" class="btn-green">
+                    Tiếp tục mua sắm →
+                </a>
+            </div>
+
+            <div id="cart-layout" class="cart-layout">
+
+                <!-- DANH SÁCH SẢN PHẨM -->
+                <section class="cart-products">
+                    <div class="cart-table-heading">
+                        <h2>Sản phẩm trong giỏ</h2>
+                        <span id="cart-item-count">0 sản phẩm</span>
+                    </div>
+
+                    <div id="cart-items" class="cart-items-list"></div>
+
+                    <div class="cart-bottom-actions">
+                        <a href="ecommerce.html#products">← Tiếp tục mua sắm</a>
+                        <button type="button" id="clear-cart">Xóa tất cả</button>
+                    </div>
+                </section>
+
+                <!-- TỔNG ĐƠN -->
+                <aside class="cart-summary">
+                    <h2>Tóm tắt đơn hàng</h2>
+
+                    <div class="summary-row">
+                        <span>Tạm tính</span>
+                        <strong id="subtotal">0đ</strong>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Phí vận chuyển</span>
+                        <strong id="shipping">0đ</strong>
+                    </div>
+
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-row summary-total">
+                        <span>Tổng cộng</span>
+                        <strong id="grand-total">0đ</strong>
+                    </div>
+
+                    <p class="summary-note">
+                        Đây là website demo phục vụ bài thực hành.
+                        Chưa kết nối cổng thanh toán thực tế.
+                    </p>
+
+                    <button class="btn-green checkout-button" id="checkout">
+                        Tiến hành đặt hàng →
+                    </button>
+
+                    <div class="summary-benefits">
+                        <p>✓ Sản phẩm handmade</p>
+                        <p>✓ Hỗ trợ tư vấn khách hàng</p>
+                        <p>✓ Kiểm tra đơn hàng trước khi xác nhận</p>
+                    </div>
+                </aside>
+
+            </div>
+
+            <!-- FORM ĐẶT HÀNG DEMO -->
+            <section id="checkout-section" class="checkout-section" hidden>
+                <h2>Thông tin đặt hàng</h2>
+                <p>Vui lòng nhập thông tin để tạo đơn hàng demo.</p>
+
+                <form id="checkout-form" class="checkout-form">
+                    <div class="form-grid">
+                        <div class="form-field">
+                            <label for="customer-name">Họ và tên *</label>
+                            <input id="customer-name" required maxlength="100" placeholder="Nguyễn Văn A">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="customer-phone">Số điện thoại *</label>
+                            <input id="customer-phone" type="tel" required pattern="[0-9]{10,11}"
+                                placeholder="0912345678">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="customer-address">Địa chỉ nhận hàng *</label>
+                        <input id="customer-address" required maxlength="250"
+                            placeholder="Số nhà, đường, phường, quận, thành phố">
+                    </div>
+
+                    <div class="form-field">
+                        <label for="customer-note">Ghi chú</label>
+                        <textarea id="customer-note" rows="3" maxlength="500"
+                            placeholder="Ghi chú cho đơn hàng..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-green">
+                        Xác nhận đơn hàng
+                    </button>
+                </form>
+            </section>
+
+            <section id="order-success" class="order-success" hidden>
+                <div class="success-icon">✓</div>
+                <h2>Đặt hàng demo thành công!</h2>
+                <p id="order-message"></p>
+                <a href="ecommerce-status.html" id="order-lookup-link" class="btn-green">Xem đơn hàng</a>
+                <a href="ecommerce.html" class="btn-green">Về trang chủ</a>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="ecommerce.html">Núi Len<span>.</span></a>
+                    <p>Len sợi và sản phẩm handmade được chọn lựa dành cho những người yêu sáng tạo.</p>
+                    <div class="footer-contact">
+                        <a href="tel:0868844261">0868 844 261</a>
+                        <a href="mailto:hello@nuilen.vn">hello@nuilen.vn</a>
+                        <span>TP. Hồ Chí Minh, Việt Nam</span>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Danh mục</h3>
+                    <a href="ecommerce.html#products">Tất cả sản phẩm</a>
+                    <a href="ecommerce.html?category=yarn#products">Len sợi</a>
+                    <a href="ecommerce.html?category=amigurumi#products">Gấu bông và Hoa</a>
+                    <a href="ecommerce.html?category=materials#products">Kim móc &amp; phụ liệu</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="ecommerce.html">Trang chủ</a>
+                    <a href="ecommerce-status.html">Đơn hàng</a>
+                    <a href="ecommerce-cart.html">Giỏ hàng</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <p>Thứ 2 – Thứ 7</p>
+                    <p>Liên hệ để được tư vấn sản phẩm.</p>
+                    <a href="mailto:hello@nuilen.vn">Gửi yêu cầu hỗ trợ →</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Núi Len. All rights reserved.</span>
+                <a href="#top">Về đầu trang ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast" role="status"></div>
+
+    <script>
+        "use strict";
+
+        const store = window.NuiLen;
+        const money = store.formatPrice;
+        let cart = store.getCart();
+
+        function saveCart() {
+            store.saveCart(cart);
+            renderCart();
+        }
+
+        const showToast = store.showToast;
+        const stockFor = name => {
+            const item = cart.get(name);
+            const product = store.getProduct(item?.id || name);
+            return product ? Math.max(0, Number(product.stock) || 0) : 0;
+        };
+        function renderCart() {
+            const container = document.getElementById("cart-items");
+            const empty = document.getElementById("cart-empty");
+            const layout = document.getElementById("cart-layout");
+
+            const count = [...cart.values()].reduce(
+                (sum, item) => sum + Number(item.quantity || 0), 0
+            );
+
+            const badge = document.getElementById("cart-count");
+            badge.textContent = count;
+            badge.hidden = count === 0;
+
+            document.getElementById("cart-item-count").textContent =
+                count + " sản phẩm";
+
+            if (!cart.size) {
+                empty.hidden = false;
+                layout.hidden = true;
+                document.getElementById("checkout-section").hidden = true;
+                container.replaceChildren();
+                return;
+            }
+
+            empty.hidden = true;
+            layout.hidden = false;
+            container.replaceChildren();
+
+            let subtotal = 0;
+
+            cart.forEach((item, name) => {
+                const product = store.getProduct(item.id) || store.getProduct(name);
+                const price = Number(item.price ?? product?.price) || 0;
+                const qty = Number(item.quantity) || 0;
+                subtotal += price * qty;
+
+                const row = document.createElement("article");
+                row.className = "cart-product-row";
+
+                const imageLink = document.createElement("a");
+                imageLink.className = "cart-product-image";
+                imageLink.href = item.id
+                    ? "ecommerce-detail.html?id=" + encodeURIComponent(item.id)
+                    : "ecommerce.html#products";
+
+                const img = document.createElement("img");
+                img.src = product?.image || item.image || "images/banner1.webp";
+                img.alt = name;
+                imageLink.appendChild(img);
+
+                const info = document.createElement("div");
+                info.className = "cart-product-info";
+
+                const title = document.createElement("h3");
+                title.textContent = (product?.name || name) + (item.variant ? " — " + item.variant : "");
+
+                const unitPrice = document.createElement("p");
+                unitPrice.textContent = money(price);
+
+                const quantityControl = document.createElement("div");
+                quantityControl.className = "quantity-control";
+
+                const minus = document.createElement("button");
+                minus.type = "button";
+                minus.textContent = "−";
+                minus.setAttribute("aria-label", "Giảm số lượng " + name);
+                minus.onclick = () => changeQuantity(name, -1);
+
+                const quantityInput = document.createElement("input");
+                quantityInput.type = "number";
+                quantityInput.min = "1";
+                quantityInput.max = String(stockFor(name));
+                quantityInput.value = qty;
+                quantityInput.setAttribute("aria-label", "Số lượng " + name);
+                quantityInput.onchange = () => {
+                    const newQty = Number(quantityInput.value);
+                    if (!Number.isInteger(newQty) || newQty < 1 ||
+                        newQty > stockFor(name)) {
+                        showToast("Số lượng không hợp lệ.");
+                        renderCart();
+                        return;
+                    }
+                    item.quantity = newQty;
+                    cart.set(name, item);
+                    saveCart();
+                };
+
+                const plus = document.createElement("button");
+                plus.type = "button";
+                plus.textContent = "+";
+                plus.setAttribute("aria-label", "Tăng số lượng " + name);
+                plus.onclick = () => changeQuantity(name, 1);
+
+                quantityControl.append(minus, quantityInput, plus);
+                info.append(title, unitPrice, quantityControl);
+
+                const right = document.createElement("div");
+                right.className = "cart-product-right";
+
+                const total = document.createElement("strong");
+                total.textContent = money(price * qty);
+
+                const remove = document.createElement("button");
+                remove.type = "button";
+                remove.className = "remove-product";
+                remove.textContent = "Xóa";
+                remove.onclick = () => {
+                    cart.delete(name);
+                    saveCart();
+                    showToast("Đã xóa sản phẩm.");
+                };
+
+                right.append(total, remove);
+                row.append(imageLink, info, right);
+                container.appendChild(row);
+            });
+
+            document.getElementById("subtotal").textContent = money(subtotal);
+            document.getElementById("shipping").textContent = "0đ";
+            document.getElementById("grand-total").textContent = money(subtotal);
+        }
+
+        function changeQuantity(name, change) {
+            const item = cart.get(name);
+            if (!item) return;
+
+            const next = Number(item.quantity) + change;
+
+            if (next < 1) {
+                cart.delete(name);
+            } else if (next > stockFor(name)) {
+                showToast("Không đủ số lượng tồn kho.");
+                return;
+            } else {
+                item.quantity = next;
+                cart.set(name, item);
+            }
+
+            saveCart();
+        }
+
+        document.getElementById("clear-cart").addEventListener("click", () => {
+            if (confirm("Bạn muốn xóa tất cả sản phẩm trong giỏ?")) {
+                cart.clear();
+                saveCart();
+                showToast("Đã xóa giỏ hàng.");
+            }
+        });
+
+        document.getElementById("checkout").addEventListener("click", () => {
+            const section = document.getElementById("checkout-section");
+            section.hidden = false;
+            section.scrollIntoView({ behavior: "smooth" });
+        });
+
+        document.getElementById("checkout-form").addEventListener("submit", e => {
+            e.preventDefault();
+            if (!cart.size) return;
+
+            const invalidItem = [...cart.entries()].find(([name, item]) => {
+                const quantity = Number(item.quantity);
+                return !Number.isInteger(quantity) || quantity < 1 || quantity > stockFor(name);
+            });
+            if (invalidItem) {
+                showToast("Có sản phẩm không đủ tồn kho. Vui lòng kiểm tra lại giỏ hàng.");
+                renderCart();
+                return;
+            }
+
+            const name = document.getElementById("customer-name").value.trim();
+            const phone = document.getElementById("customer-phone").value.trim();
+            const address = document.getElementById("customer-address").value.trim();
+            const note = document.getElementById("customer-note").value.trim();
+
+            if (!name || !/^[0-9]{10,11}$/.test(phone) || !address) {
+                showToast("Vui lòng kiểm tra thông tin đặt hàng.");
+                return;
+            }
+
+            const total = [...cart.values()].reduce(
+                (sum, item) => sum + Number(item.price) * Number(item.quantity), 0
+            );
+
+            const orderId = "NL" + Date.now();
+
+            const order = {
+                id: orderId,
+                customer: { name, phone, address, note },
+                items: [...cart],
+                total,
+                status: "Chờ xác nhận",
+                createdAt: new Date().toISOString()
+            };
+
+            // Lưu đơn hàng demo vào trình duyệt
+            let orders;
+            try {
+                orders = JSON.parse(localStorage.getItem("nuilen-orders") || "[]");
+                if (!Array.isArray(orders)) orders = [];
+            } catch {
+                orders = [];
+            }
+
+            orders.push(order);
+            localStorage.setItem("nuilen-orders", JSON.stringify(orders));
+
+            cart.clear();
+            store.saveCart(cart);
+
+            document.getElementById("cart-layout").hidden = true;
+            document.getElementById("cart-empty").hidden = true;
+            document.getElementById("checkout-section").hidden = true;
+
+            const success = document.getElementById("order-success");
+            success.hidden = false;
+
+            document.getElementById("order-message").textContent =
+                `Mã đơn hàng: ${orderId}. Tổng tiền: ${money(total)}. ` +
+                "Đơn hàng đã được lưu trong trình duyệt để minh họa, " +
+                "chưa được gửi đến cửa hàng.";
+
+            document.getElementById("order-lookup-link").href =
+                "ecommerce-status.html?id=" + encodeURIComponent(orderId);
+            document.getElementById("cart-count").hidden = true;
+            success.scrollIntoView({ behavior: "smooth" });
+        });
+
+        window.addEventListener("storage", event => {
+            if (event.key === store.CART_KEY) {
+                cart = store.getCart();
+                renderCart();
+            }
+        });
+        renderCart();
+    </script>
+</body>
+
+</html>

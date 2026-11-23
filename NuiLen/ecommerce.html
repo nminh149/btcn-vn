@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Núi Len | Handmade with Love</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+
+    <link rel="stylesheet" href="vendor/bootstrap-star-rating/css/star-rating.min.css">
+    <link rel="stylesheet" href="vendor/bootstrap-star-rating/themes/krajee-svg/theme.min.css">
+
+</head>
+
+<body id="top">
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand-logo" href="ecommerce.html">
+                <img src="images/Nuilenlogo.png" alt="Núi Len">
+            </a>
+
+            <form id="search-form" class="search-form">
+                <input id="search-input" type="search" placeholder="Tìm món đồ len bạn yêu thích..."
+                    aria-label="Tìm sản phẩm">
+                <button type="submit" aria-label="Tìm kiếm">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="10.5" cy="10.5" r="6.5" />
+                        <path d="m16 16 5 5" />
+                    </svg>
+                </button>
+            </form>
+
+            <div class="header-actions">
+                <a href="ecommerce-status.html" class="header-icon" title="Đơn hàng" aria-label="Đơn hàng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="8" r="4" />
+                        <path d="M4 21c0-4.5 3.5-7 8-7s8 2.5 8 7" />
+                    </svg>
+                </a>
+                <a href="ecommerce-cart.html" class="header-icon" title="Giỏ hàng" aria-label="Giỏ hàng">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M3 4h2l2 11h12l2-8H6" />
+                        <circle cx="9" cy="20" r="1" />
+                        <circle cx="18" cy="20" r="1" />
+                    </svg>
+                    <span class="cart-count" id="cart-count" hidden>0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="main-navigation" aria-label="Điều hướng chính">
+        <div class="container">
+            <button class="nav-toggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="site-navigation-links">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-list" id="site-navigation-links">
+                <li><a class="nav-link active" href="#top">Trang chủ</a></li>
+                <li class="nav-dropdown">
+                    <a class="nav-link" href="#products">
+                        Danh m&#7909;c s&#7843;n ph&#7849;m <span class="caret"><svg class="chevron-icon"
+                                viewBox="0 0 16 16" aria-hidden="true">
+                                <path d="m3 6 5 5 5-5" />
+                            </svg></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#products" data-filter="all">Tất cả sản phẩm</a></li>
+                        <li><a href="#products" data-filter="yarn">Len sợi</a></li>
+                        <li><a href="#products" data-filter="amigurumi">G&#7845;u b&#244;ng v&#224; Hoa</a></li>
+                        <li><a href="#products" data-filter="keychain">Móc khóa len</a></li>
+                        <li><a href="#products" data-filter="bag">Túi & phụ kiện</a></li>
+                        <li><a href="#products" data-filter="materials">Kim móc & phụ liệu</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-link" href="ecommerce-status.html">Đơn hàng</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BANNER SLIDER -->
+    <section class="hero" aria-label="Banner Núi Len">
+        <div class="hero-carousel" id="hero-carousel">
+
+            <div class="hero-slide active">
+                <img src="images/banner1.webp" alt="Banner sản phẩm len">
+                <div class="container hero-content-wrap">
+                </div>
+            </div>
+
+            <div class="hero-slide">
+                <img src="images/banner2.png" alt="Banner cuộn len">
+                <div class="container hero-content-wrap">
+                </div>
+            </div>
+
+            <div class="hero-slide">
+                <img src="https://scontent.fsgn5-12.fna.fbcdn.net/v/t39.30808-6/480918300_2012573979169027_283508586555207769_n.jpg?stp=dst-jpg_tt6&cstp=mx2048x1080&ctp=s2048x1080&_nc_cat=110&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=BKbPdW10zdgQ7kNvwGS1H5x&_nc_oc=AdrWK_7IkRdtpH458ficD0Kdu1qHAHGZ_e684IP-3k9UEnVt3_i3SAxgsaK3TLRBBuA&_nc_zt=23&_nc_ht=scontent.fsgn5-12.fna&_nc_gid=tD_OybgO88BXgBYLUbXElQ&_nc_ss=7b2a8&oh=00_AQTIocjIJGQ4vyt3pu4GDOpzE3nktviA1WVdEEnWpt7G3g&oe=6B09F1AC"
+                    alt="Sáng tạo với len">
+                <div class="container hero-content-wrap">
+                </div>
+            </div>
+
+            <button class="hero-arrow hero-prev" id="hero-prev" type="button" aria-label="Slide trước">❮</button>
+            <button class="hero-arrow hero-next" id="hero-next" type="button" aria-label="Slide tiếp theo">❯</button>
+
+            <div class="hero-dots">
+                <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+                <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+                <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <main id="products" class="main-content">
+        <div class="container shop-layout">
+
+            <aside class="sidebar">
+                <div class="sidebar-box">
+                    <h2 class="sidebar-title">Danh mục</h2>
+                    <div class="sidebar-menu">
+                        <button class="sidebar-item active" data-category="all">Tất cả <span>›</span></button>
+                        <button class="sidebar-item" data-category="yarn">Len sợi <span>›</span></button>
+                        <button class="sidebar-item" data-category="amigurumi">G&#7845;u b&#244;ng v&#224; Hoa
+                            <span>›</span></button>
+                        <button class="sidebar-item" data-category="keychain">Móc khóa len <span>›</span></button>
+                        <button class="sidebar-item" data-category="bag">Túi & phụ kiện <span>›</span></button>
+                        <button class="sidebar-item" data-category="materials">Kim móc & phụ liệu
+                            <span>›</span></button>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="products-section">
+                <div class="products-heading">
+                    <div>
+                        <h2>Tất cả sản phẩm</h2>
+                    </div>
+                    <button class="view-all" id="show-all"></button>
+                </div>
+
+                <p id="result-status" class="result-status" role="status"></p>
+
+                <!-- JS tự tạo các card từ dữ liệu sản phẩm -->
+                <div class="product-grid" id="product-grid"></div>
+
+                <div class="empty-products" id="empty-products" hidden>
+                    <h3>Không tìm thấy sản phẩm</h3>
+                    <p>Hãy thử từ khóa hoặc danh mục khác nhé.</p>
+                    <button class="btn-green" id="reset-products">Xem tất cả</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a class="footer-logo" href="ecommerce.html">Núi Len<span>.</span></a>
+                    <p>Len sợi và sản phẩm handmade được chọn lựa dành cho những người yêu sáng tạo.</p>
+                    <div class="footer-contact">
+                        <a href="tel:0868844261">0868 844 261</a>
+                        <a href="mailto:hello@nuilen.vn">hello@nuilen.vn</a>
+                        <span>TP. Hồ Chí Minh, Việt Nam</span>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Danh mục</h3>
+                    <a href="ecommerce.html#products">Tất cả sản phẩm</a>
+                    <a href="ecommerce.html?category=yarn#products">Len sợi</a>
+                    <a href="ecommerce.html?category=amigurumi#products">Gấu bông và Hoa</a>
+                    <a href="ecommerce.html?category=materials#products">Kim móc &amp; phụ liệu</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Liên kết nhanh</h3>
+                    <a href="ecommerce.html">Trang chủ</a>
+                    <a href="ecommerce-status.html">Đơn hàng</a>
+                    <a href="ecommerce-cart.html">Giỏ hàng</a>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Hỗ trợ</h3>
+                    <p>Thứ 2 – Thứ 7</p>
+                    <p>Liên hệ để được tư vấn sản phẩm.</p>
+                    <a href="mailto:hello@nuilen.vn">Gửi yêu cầu hỗ trợ →</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 Núi Len. All rights reserved.</span>
+                <a href="#top">Về đầu trang ↑</a>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+    <script src="vendor/bootstrap-star-rating/themes/krajee-svg/theme.min.js"></script>
+
+    <script>
+        "use strict";
+
+        /* DỮ LIỆU DEMO SẢN PHẨM */
+        const PRODUCTS = window.NuiLen.products;
+        const store = window.NuiLen;
+        const money = store.formatPrice;
+        const toast = store.showToast;
+
+        function addToCart(id) {
+            const product = store.getProduct(id);
+            if (Array.isArray(product?.variants) && product.variants.length) {
+                location.href = "ecommerce-detail.html?id=" + encodeURIComponent(id);
+                return;
+            }
+            const result = store.addToCart(id);
+            if (!result.ok) {
+                toast(result.reason === "out-of-stock"
+                    ? "Sản phẩm đã đạt số lượng tồn kho."
+                    : "Không thể thêm sản phẩm vào giỏ hàng.");
+                return;
+            }
+            toast("Đã thêm sản phẩm vào giỏ hàng!");
+        }
+        /* RENDER PRODUCTS */
+        const grid = document.getElementById("product-grid");
+        let category = "all";
+        let keyword = "";
+
+        function normalize(text) {
+            return String(text).normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/g, "d").toLowerCase();
+        }
+
+        function renderProducts() {
+            const filtered = PRODUCTS.filter(p => {
+                const matchCategory = category === "all" || p.category === category;
+                const matchSearch = normalize(p.name + " " + p.label + " " + p.description)
+                    .includes(normalize(keyword));
+                return matchCategory && matchSearch;
+            });
+
+            grid.innerHTML = filtered.map(p => {
+                const hasDiscount = p.badge !== "New" && p.original > p.price;
+                const discount = hasDiscount ? Math.round((1 - p.price / p.original) * 100) : 0;
+                const badgeClass = p.badge === "New" ? "product-badge-new"
+                    : p.badge === "Best Seller" ? "product-badge-best-seller" : "";
+                const stock = store.stockStatus(p);
+
+                return `
+        <article class="product-card">
+          <div class="product-image">
+            <a href="ecommerce-detail.html?id=${p.id}">
+              <img src="${p.image}" alt="${p.name}" loading="lazy">
+            </a>
+            ${hasDiscount ? `<span class="discount-badge">-${discount}%</span>` : ""}
+            ${p.badge ? `<span class="product-badge ${badgeClass}">${p.badge}</span>` : ""}
+            ${p.stock > 0 ? `<button class="add-cart" data-id="${p.id}"
+              aria-label="Thêm ${p.name} vào giỏ hàng">+</button>` : `<span class="add-cart-disabled">Hết hàng</span>`}
+          </div>
+
+          <div class="product-info">
+            <h3><a href="ecommerce-detail.html?id=${p.id}">${p.name}</a></h3>
+
+            <div class="product-prices">
+              <strong>${money(p.price)}</strong>
+              ${hasDiscount ? `<del>${money(p.original)}</del>` : ""}
+            </div>
+
+            <div class="stock-info">
+              <div class="stock-heading">
+                <span class="stock-state stock-state-${stock.tone}">${stock.label}</span>
+              </div>
+              <div class="progress stock-progress" aria-label="Tình trạng tồn kho">
+                <div class="progress-bar ${stock.cls}"
+                  role="progressbar"
+                  aria-valuenow="${stock.percent}"
+                  aria-valuemin="0" aria-valuemax="100"
+                  aria-valuetext="Còn ${p.stock} trên ${stock.total} sản phẩm"
+                  style="width:${stock.percent}%"></div>
+                <span class="stock-progress-label">${p.stock > 0 ? `Còn ${p.stock} sản phẩm` : "Hết hàng"}</span>
+              </div>
+            </div>
+
+            <div class="product-rating" aria-label="${p.rating} trên 5 sao">
+              <input
+              type="text"
+              class="product-star-rating"
+              value="${p.rating}"
+              data-size="xs"
+              aria-label="Đánh giá ${p.rating} trên 5">
+              <small>${p.rating.toFixed(1)}/5</small>
+            </div>
+          </div>
+        </article>`;
+            }).join("");
+
+            // Khởi tạo Bootstrap Star Rating
+            if (window.jQuery && $.fn.rating) {
+                $(".product-star-rating").rating({
+                    min: 0,
+                    max: 5,
+                    step: 0.1,
+                    size: "xs",
+                    showClear: false,
+                    showCaption: false,
+                    displayOnly: true,
+                    readonly: true,
+                    theme: "krajee-svg"
+                });
+            }
+
+            document.getElementById("empty-products").hidden = filtered.length > 0;
+            document.getElementById("result-status").textContent =
+                keyword ? `Tìm thấy ${filtered.length} sản phẩm phù hợp.` : "";
+
+            document.querySelectorAll(".sidebar-item").forEach(btn => {
+                const active = btn.dataset.category === category;
+                btn.classList.toggle("active", active);
+                btn.setAttribute("aria-pressed", String(active));
+            });
+        }
+
+        grid.addEventListener("click", e => {
+            const button = e.target.closest(".add-cart");
+            if (button) addToCart(button.dataset.id);
+        });
+
+        function setCategory(value) {
+            category = value;
+            keyword = "";
+            document.getElementById("search-input").value = "";
+            renderProducts();
+        }
+
+        document.querySelectorAll(".sidebar-item").forEach(btn => {
+            btn.addEventListener("click", () => setCategory(btn.dataset.category));
+        });
+
+        document.querySelectorAll("[data-filter]").forEach(link => {
+            link.addEventListener("click", () => setCategory(link.dataset.filter));
+        });
+
+        document.getElementById("show-all").addEventListener("click", () => setCategory("all"));
+        document.getElementById("reset-products").addEventListener("click", () => setCategory("all"));
+
+        /* BANNER */
+        const slides = [...document.querySelectorAll(".hero-slide")];
+        const dots = [...document.querySelectorAll(".hero-dot")];
+        const carousel = document.getElementById("hero-carousel");
+        let current = 0;
+        let timer;
+
+        function showSlide(index) {
+            current = (index + slides.length) % slides.length;
+            slides.forEach((s, i) => {
+                s.classList.toggle("active", i === current);
+                s.setAttribute("aria-hidden", String(i !== current));
+                s.inert = i !== current;
+            });
+            dots.forEach((d, i) => d.classList.toggle("active", i === current));
+        }
+
+        function startSlider() {
+            clearInterval(timer);
+            timer = setInterval(() => showSlide(current + 1), 4000);
+        }
+
+        function changeSlide(index) {
+            showSlide(index);
+            startSlider();
+        }
+
+        document.getElementById("hero-prev").onclick = () => changeSlide(current - 1);
+        document.getElementById("hero-next").onclick = () => changeSlide(current + 1);
+        dots.forEach((d, i) => d.onclick = () => changeSlide(i));
+
+        carousel.addEventListener("mouseenter", () => clearInterval(timer));
+        carousel.addEventListener("mouseleave", startSlider);
+        carousel.addEventListener("focusin", () => clearInterval(timer));
+        carousel.addEventListener("focusout", e => {
+            if (!carousel.contains(e.relatedTarget)) startSlider();
+        });
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) clearInterval(timer);
+            else startSlider();
+        });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialSearch = urlParams.get("q");
+        const initialCategory = urlParams.get("category");
+
+        if (initialSearch) {
+            keyword = initialSearch.trim();
+            document.getElementById("search-input").value = keyword;
+        }
+
+        const categories = ["all", "yarn", "amigurumi", "keychain", "bag", "materials"];
+        if (categories.includes(initialCategory)) {
+            category = initialCategory;
+        }
+
+        showSlide(0);
+        startSlider();
+        renderProducts();
+        window.NuiLen.updateCartCount();
+    </script>
+</body>
+
+</html>
