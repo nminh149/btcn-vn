@@ -7,8 +7,10 @@ body {
     display: grid;
     place-items: center;
     background: linear-gradient(145deg, #dff5ff, #f7fbff 55%, #e7f8ee);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Be Vietnam Pro", "Noto Sans", Arial, sans-serif;
 }
+
+button { font-family: inherit; }
 
 #container {
     position: relative;
@@ -41,8 +43,8 @@ body {
     right: -64px;
     width: 60px;
     height: 160px;
-    border: 3px solid #18884b;
-    background: linear-gradient(90deg, #20c968, #45e681 48%, #17b958);
+    border: 3px solid #c73866;
+    background: linear-gradient(90deg, #df5a96, #dd4388 48%, #e35092);
     box-shadow: inset 5px 0 0 rgba(255,255,255,.2), 0 3px 7px rgba(0,0,0,.12);
 }
 #pole_1 { top: 0; border-top: 0; border-radius: 0 0 8px 8px; }
@@ -124,24 +126,48 @@ body {
 }
 #play_btn:hover { background: rgba(255,255,255,.18); }
 
-#restart_btn {
-    position: fixed;
+#end_panel {
+    position: absolute;
     z-index: 10;
-    top: 50%;
-    left: 50%;
-    display: none;
-    padding: 16px 28px;
-    border: 0;
-    border-radius: 14px;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    background: rgba(24, 48, 67, .48);
+    backdrop-filter: blur(3px);
+}
+#end_panel[hidden] { display: none; }
+
+.end_card {
+    width: 100%;
+    padding: 24px 20px;
+    border-radius: 16px;
     background: #fff;
     color: #315268;
-    box-shadow: 0 12px 35px rgba(27, 79, 112, .24);
-    font-size: 23px;
+    text-align: center;
+    box-shadow: 0 10px 28px rgba(20, 56, 78, .25);
+}
+#end_title {
+    margin: 0 0 12px;
+    color: #e34555;
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.2;
+}
+#final_score { margin: 0 0 18px; font-size: 20px; font-weight: 700; }
+
+#restart_btn {
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 999px;
+    background: #2878e8;
+    color: #fff;
+    box-shadow: 0 5px 13px rgba(35, 91, 150, .25);
+    font-size: 17px;
     font-weight: 800;
     cursor: pointer;
-    transform: translate(-50%, -50%);
 }
-#restart_btn:hover { background: #eff8ff; }
+#restart_btn:hover { background: #1764ca; }
 
 @keyframes level-pop {
     0%, 100% { transform: scale(1); }

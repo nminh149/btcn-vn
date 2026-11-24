@@ -4,6 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Flappy Bird</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -11,12 +14,18 @@
         <div id="bird"></div>
         <div id="pole_1" class="pole"></div>
         <div id="pole_2" class="pole"></div>
-        <button id="play_btn" type="button">Nhấn Arrow Down để bắt đầu</button>
+        <button id="play_btn" type="button">Nhấn Click để bắt đầu</button>
         <span id="level">Level: 1</span>
         <span id="score">0</span>
         <div id="level_notice" aria-live="polite"></div>
+        <section id="end_panel" aria-live="assertive" aria-labelledby="end_title" hidden>
+            <div class="end_card">
+                <h1 id="end_title">Game Over</h1>
+                <p id="final_score">Điểm: 0</p>
+                <button id="restart_btn" type="button">Chơi lại</button>
+            </div>
+        </section>
     </div>
-    <button id="restart_btn" type="button">Chơi lại</button>
     <script src="js/jquery.min.js"></script>
     <script src="js/script.js"></script>
 </body>

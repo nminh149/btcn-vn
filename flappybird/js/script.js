@@ -112,7 +112,9 @@
         bird_velocity = 0;
         game_running = false;
         game_over = true;
-        $('#restart_btn').text(won ? 'Chiến thắng! Chơi lại' : 'Chơi lại').slideDown();
+        $('#end_title').text(won ? 'Chiến thắng!' : 'Game Over');
+        $('#final_score').text('Điểm: ' + score.text());
+        $('#end_panel').prop('hidden', false);
     }
 
     $('#restart_btn').on('click', function () { location.reload(); });
