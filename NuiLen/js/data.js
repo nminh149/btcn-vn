@@ -26,8 +26,8 @@ window.NUILEN_PRODUCTS = [
                 description: "Len Milk Cotton có sợi mềm, đều và dễ thao tác, phù hợp cho cả người mới bắt đầu lẫn người đã quen móc len. Chất len cho bề mặt mịn, lên mũi rõ và có bảng màu phong phú để bạn thỏa sức phối hoa, thú bông, túi nhỏ hay phụ kiện handmade. Mỗi cuộn có thể được sử dụng linh hoạt cho nhiều dự án; hãy chọn mã màu yêu thích trước khi thêm vào giỏ nhé.",
                 variants: Array.from({ length: 61 }, (_, index) => `Mã màu ${String(index + 1).padStart(2, "0")}`),
                 reviews: [
-                    { author: "Ngá»c Anh", rating: 5, createdAt: "2026-10-18", comment: "Sá»£i má»m, mÃ u lÃªn Ä‘áº¹p vÃ  dá»… mÃ³c. MÃ¬nh dÃ¹ng lÃ m hoa len ráº¥t Æ°ng." },
-                    { author: "Minh ThÆ°", rating: 5, createdAt: "2026-10-09", comment: "ÄÃ³ng gÃ³i gá»n gÃ ng, mÃ u giá»‘ng hÃ¬nh vÃ  sá»£i khÃ¡ Ä‘á»u." }
+                    { author: "Ngọc Anh", rating: 5, createdAt: "2026-10-18", comment: "Sợi mềm, màu lên đẹp và dễ móc. Mình dùng làm hoa len rất ưng." },
+                    { author: "Minh Thư", rating: 5, createdAt: "2026-10-09", comment: "Đóng gói gọn gàng, màu giống hình và sợi khá đều." }
                 ]
             },
             {
@@ -57,8 +57,8 @@ window.NUILEN_PRODUCTS = [
                 variants: ["M\u1EB7t tr\u1EDDi", "Tr\u00E1i \u0110\u1EA5t", "Set M\u1EB7t tr\u1EDDi v\u00E0 Tr\u00E1i \u0110\u1EA5t"],
                 variantPrices: { "Set M\u1EB7t tr\u1EDDi v\u00E0 Tr\u00E1i \u0110\u1EA5t": 100000 },
                 reviews: [
-                    { author: "Báº£o TrÃ¢n", rating: 5, createdAt: "2026-10-21", comment: "MÃ³c khÃ³a nhá» xinh, Ä‘Æ°á»ng mÃ³c cháº¯c cháº¯n vÃ  mÃ u sáº¯c tÆ°Æ¡i." },
-                    { author: "HÃ  My", rating: 5, createdAt: "2026-10-12", comment: "MÃ¬nh chá»n set, nháº­n Ä‘Æ°á»£c Ä‘á»§ hai máº«u. LÃ m quÃ  ráº¥t dá»… thÆ°Æ¡ng." }
+                    { author: "Bảo Trân", rating: 5, createdAt: "2026-10-21", comment: "Móc khóa nhỏ xinh, đường móc chắc chắn và màu sắc tươi." },
+                    { author: "Hà My", rating: 5, createdAt: "2026-10-12", comment: "Mình chọn set, nhận được đủ hai mẫu. Làm quà rất dễ thương." }
                 ]
             },
             {
@@ -78,8 +78,8 @@ window.NUILEN_PRODUCTS = [
                 description: "Len Nhung Gấu có sợi nhung mềm mại, êm tay và tạo độ bông đẹp cho thành phẩm. Sợi len phù hợp để móc thú bông, gối nhỏ, chăn mini và các món phụ kiện cần bề mặt mềm xốp. Có nhiều màu để lựa chọn và phối hợp; bạn hãy chọn mã màu trước khi đặt hàng để hoàn thiện món đồ handmade theo phong cách riêng.",
                 variants: Array.from({ length: 44 }, (_, index) => `Mã màu ${String(index + 1).padStart(2, "0")}`),
                 reviews: [
-                    { author: "Tháº£o Vy", rating: 5, createdAt: "2026-10-20", comment: "Len má»m, mÃ³c thÃº bÃ´ng lÃªn ráº¥t xinh. Sá»£i khÃ´ng bá»‹ xÆ¡ nhiá»u." },
-                    { author: "PhÆ°Æ¡ng Linh", rating: 4, createdAt: "2026-10-05", comment: "MÃ u Ä‘áº¹p vÃ  sá» má»m tay, phÃ¹ há»£p vá»›i ngÆ°á»i má»›i táº­p mÃ³c." }
+                    { author: "Thảo Vy", rating: 5, createdAt: "2026-10-20", comment: "Len mềm, móc thú bông lên rất xinh. Sợi không bị xơ nhiều." },
+                    { author: "Phương Linh", rating: 4, createdAt: "2026-10-05", comment: "Màu đẹp và sờ mềm tay, phù hợp với người mới tập móc." }
                 ]
             },
             {
@@ -120,8 +120,8 @@ window.NUILEN_PRODUCTS = [
                 description: "Kim móc len SKC có nhiều kích cỡ để bạn lựa chọn theo độ dày của sợi và độ chặt mong muốn. Thân kim gọn, dễ cầm nắm và hỗ trợ thao tác móc mượt mà trong các dự án từ hoa len, thú bông đến phụ kiện nhỏ. Hãy chọn đúng kích thước tính bằng milimét trước khi thêm sản phẩm vào giỏ.",
                 variants: ["1.5mm", "2.0mm", "2.5mm", "3.0mm", "3.5mm", "4.0mm", "4.5mm", "5.0mm", "5.5mm", "6.0mm"],
                 reviews: [
-                    { author: "Yáº¿n Nhi", rating: 5, createdAt: "2026-10-16", comment: "Kim cáº§m vá»«a tay, Ä‘áº§u kim mÃ³c len thuáº­n tiá»‡n." },
-                    { author: "Kim Oanh", rating: 4, createdAt: "2026-10-02", comment: "CÃ³ Ä‘á»§ cá»¡ cáº§n dÃ¹ng, thao tÃ¡c á»•n vÃ  dá»… chá»n size." }
+                    { author: "Yến Nhi", rating: 5, createdAt: "2026-10-16", comment: "Kim cầm vừa tay, đầu kim móc len thuận tiện." },
+                    { author: "Kim Oanh", rating: 4, createdAt: "2026-10-02", comment: "Có đủ cỡ cần dùng, thao tác ổn và dễ chọn size." }
                 ]
             },
             {
