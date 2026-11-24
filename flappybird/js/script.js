@@ -6,6 +6,7 @@
     var pole_2 = $('#pole_2');
     var score = $('#score');
     var level_display = $('#level');
+    var high_score_key = 'flappybird_high_score';
     var container_width = parseInt(container.width(), 10);
     var container_height = parseInt(container.height(), 10);
     var pole_initial_position = parseInt(pole.css('right'), 10);
@@ -77,7 +78,7 @@
 
     function showLevelNotice(current_level) {
         var notice = $('#level_notice');
-        notice.removeClass('show').text('LEVEL ' + current_level + '!');
+        notice.removeClass('show').text('LEVEL UP!');
         // Reflow restarts the entrance animation whenever the level changes.
         notice[0].offsetWidth;
         notice.addClass('show');
@@ -112,8 +113,20 @@
         bird_velocity = 0;
         game_running = false;
         game_over = true;
+        var current_score = parseInt(score.text(), 10) || 0;
+        var high_score = 0;
+        try {
+            high_score = parseInt(localStorage.getItem(high_score_key), 10) || 0;
+            if (current_score > high_score) {
+                high_score = current_score;
+                localStorage.setItem(high_score_key, high_score);
+            }
+        } catch (error) {
+            // Continue to show the current score if browser storage is unavailable.
+        }
         $('#end_title').text(won ? 'Chiến thắng!' : 'Game Over');
-        $('#final_score').text('Điểm: ' + score.text());
+        $('#final_score').text('Điểm: ' + current_score);
+        $('#high_score').text('Kỷ lục: ' + high_score);
         $('#end_panel').prop('hidden', false);
     }
 
