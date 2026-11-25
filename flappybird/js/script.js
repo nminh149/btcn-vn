@@ -10,7 +10,6 @@
     var container_width = parseInt(container.width(), 10);
     var container_height = parseInt(container.height(), 10);
     var pole_initial_position = parseInt(pole.css('right'), 10);
-    var pole_initial_height = parseInt(pole.css('height'), 10);
     var bird_left = parseInt(bird.css('left'), 10);
     var bird_height = parseInt(bird.height(), 10);
     var speed = 10;
@@ -24,6 +23,19 @@
     var score_updated = false;
     var game_running = false;
     var game_over = false;
+
+    function randomizePoleHeights() {
+        // Giữ khe ống rộng khoảng 43% chiều cao màn chơi, kể cả trên màn hình thấp.
+        var gap = Math.round(container_height * 0.43);
+        var total_pole_height = container_height - gap;
+        var min_height = Math.min(100, Math.floor(total_pole_height / 2));
+        var max_top_height = total_pole_height - min_height;
+        var top_height = min_height + Math.floor(Math.random() * (max_top_height - min_height + 1));
+        pole_1.css('height', top_height);
+        pole_2.css('height', total_pole_height - top_height);
+    }
+
+    randomizePoleHeights();
 
     function intervalForLevel() { return [40, 30, 25, 20][level - 1]; }
 
@@ -55,10 +67,8 @@
                 }
             }
             if (pole_position > container_width) {
-                // Giữ khe cột rộng hơn một chút và tránh thay đổi độ cao quá gắt.
-                var new_height = parseInt(Math.random() * 80, 10);
-                pole_1.css('height', pole_initial_height + new_height);
-                pole_2.css('height', pole_initial_height - new_height);
+                // Giữ khoảng cách ống ổn định, chỉ thay đổi vị trí khe giữa hai ống.
+                randomizePoleHeights();
                 score_updated = false;
                 pole_position = pole_initial_position;
             }
